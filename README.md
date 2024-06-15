@@ -12,9 +12,9 @@ and then activate the environment with
 ### Fetching data from yahoo finance
 
 To fetch data for a specific list of companies for a given period of time, pass it as a csv file in a format similar to faang.csv
-and run the command:
+and run the command from the autopilot folder:
 
-`python3 --csv_uri=/path/to/file.csv 2023-01-01 2024-01-01` 
+`python3 scripts/fetch_historical_data.py --csv_uri=/path/to/file.csv 2023-01-01 2024-01-01` 
 
 where the two dates are the start and end time to fetch data.
 
