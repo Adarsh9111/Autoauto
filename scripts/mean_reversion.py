@@ -1,11 +1,11 @@
 import warnings
-
 warnings.simplefilter(action='ignore', category=FutureWarning)
 import pandas as pd
+warnings.simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
 import argparse
-
 from load_data import read_close_price, read_open_price
 import numpy as np
+import time
 
 
 def mean_reversion_strategy(open_data, close_data, LB):
@@ -68,6 +68,7 @@ def calculate_mean_reversion(df, LB):
 
 
 def main():
+    start_time = time.time()
     parser = argparse.ArgumentParser(description='Mean reversion strategy')
     parser.add_argument('--verbose', type=bool, default=False, help='Should print vectors?')
     parser.add_argument('--data_path', type=str, default='./data', help="Path to the folder with csv data")
@@ -89,6 +90,7 @@ def main():
         print("PnL vector (in bps): ")
         print(mean_reversion_values)
     print("Aggregate PnL for all stocks over trading duration (in bps): ", mean_reversion_values.sum(axis=0))
+    print("--- Executed in %s seconds ---" % (time.time() - start_time))
 
 
 if __name__ == '__main__':
