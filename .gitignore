@@ -2,3 +2,5 @@
 *.ipynb
 .DS_STORE
 venv/
+.idea/
+scripts/__pycache__
