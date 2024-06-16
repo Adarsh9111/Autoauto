@@ -86,10 +86,13 @@ def main():
 
     # Print mean reversion values
     if verbose:
-        print("Mean reversion strategy, lookback:", LB)
-        print("PnL vector (in bps): ")
+        print("Mean reversion strategy")
+        print("-- lookback:", LB)
+        print("-- universe size:", len(close_data.columns))
+        print("-- trading days:", len(close_data))
+        print("\nPnL vector (in bps): ")
         print(mean_reversion_values)
-    print("Aggregate PnL for all stocks over trading duration (in bps): ", mean_reversion_values.sum(axis=0))
+    print("\n--- Aggregate PnL for all stocks over trading duration (in bps): ", mean_reversion_values.sum(axis=0))
     print("--- Executed in %s seconds ---" % (time.time() - start_time))
 
 

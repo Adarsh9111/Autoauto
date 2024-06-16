@@ -22,3 +22,14 @@ The output is always stored in the `data` folder.
 
 If the csv_uri is missing from the arguments, automatically fetches the list of top 500 stocks in the US market and attempts to download historical data for the input 
 time range
+
+### Mean reversion strategy
+
+To simulate the mean reversion strategy, ensure that the data is present in the /data folder.
+Execute this command:
+
+`python3 scripts/mean_reversion.py --lookback=5`
+
+where the lookback can be changed to any value.
+
+The output is the aggregated PnL in basis points achieved by trading over the entire set of stocks present in data
