@@ -66,6 +66,28 @@ def read_close_price(folder_path: str):
     return closing_prices_df
 
 
+def read_open_price(folder_path: str):
+    """
+    Create a new DataFrame with opening prices for each stock.
+
+    Parameters:
+    - combined_df (DataFrame): DataFrame containing combined stock data with MultiIndex columns.
+
+    Returns:
+    - DataFrame: DataFrame with columns as tickers and rows as opening prices for each stock on each date.
+    """
+    data = read_stock_data(folder_path)
+    # Initialize an empty DataFrame with Date index
+    opening_price_df = pd.DataFrame(index=data.index.get_level_values(0).unique())
+
+    # Populate closing prices for each ticker
+    for ticker in data.columns.levels[0]:
+        open_col = (ticker, 'Open')
+        opening_price_df[ticker] = data[open_col]
+
+    return opening_price_df
+
+
 def main():
     # Example usage:
     folder_path = './data'
