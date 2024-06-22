@@ -91,7 +91,8 @@ def read_open_price(folder_path: str):
 def main():
     # Example usage:
     folder_path = './data'
-    combined_data = read_stock_data(folder_path)
+    # combined_data = read_stock_data(folder_path)
+    combined_data = read_close_price(folder_path)
 
     # Access data for a specific ticker
     ticker_data = combined_data['AAPL']
