@@ -3,7 +3,7 @@ from load_config import load_config
 from fetch_data import fetch_data
 
 
-def refresh_historical_data(config_path):
+def fetch_historical_data(config_path):
     """
     This method is used to fetch stock data for backtesting use cases according to the config file and stored in the
     hdata folder in the format <ticker>_<start_date>_<end_date>.csv
@@ -25,13 +25,13 @@ def refresh_historical_data(config_path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Refresh historical data for backtesting')
+    parser = argparse.ArgumentParser(description='Fetch historical data for backtesting')
     parser.add_argument('--config_path', type=str, default='config.yaml',
                         help='Location of the config file')
     args = parser.parse_args()
 
     config_path = args.config_path
-    refresh_historical_data(config_path)
+    fetch_historical_data(config_path)
 
 
 if __name__ == '__main__':
