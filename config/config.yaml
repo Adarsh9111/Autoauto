@@ -1,0 +1,9 @@
+backtesting:
+  start_date: 2017-01-01
+  end_date: 2023-12-31
+
+tickers:
+  - AAPL
+  - MSFT
+  - GOOGL
+  - NTFLX
