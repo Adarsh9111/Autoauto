@@ -36,6 +36,27 @@ The output is the aggregated PnL in basis points achieved by trading over the en
 
 ### todos
 
+#### infra 
+
 - [ ] add date in the close/open index
-- [ ] schedule job to update latest data for each stock by appending to existing file
-- [ ] add tickers as a config
+- [ ] add tickers as a config [top 200]
+- [ ] setup backtesting data from 2017-2024 [freeze this, do not change]
+- [ ] update loader methods to fetch backtesting data by default but support custom files
+- [ ] create a new job to fetch data for all tickers for last 30 days (for calculating daily weights)
+- [ ] pnl plot of cumulative return vector
+- [ ] do not iterate over columns while processing values in mean reversion, use vectorization
+- [ ] add sector neutralization
+
+#### trading
+
+- [ ] explore APIs to trade
+- [ ] how does shorting work
+- [ ] fetch v-vap data
+- [ ] sum, subtract, multiply, divide, power operators
+- [ ] zscore, ts_rank, rank
+
+### long term todos:
+
+- [ ] compute draw down for strategies
+- [ ] frontend
+- [ ] printing library for backtest methods
