@@ -13,7 +13,12 @@ class Config:
         self.backtesting = Backtesting(**backtesting)
 
 
-def read_config(file_path):
+def load_config(file_path):
+    """
+    Load configuration from the config YAML file
+    :param file_path: path to config file
+    :return: config object
+    """
     with open(file_path, 'r') as f:
         config_dict = yaml.safe_load(f)
     config = Config(**config_dict)
@@ -21,6 +26,6 @@ def read_config(file_path):
 
 
 if __name__ == '__main__':
-    config = read_config('./config/config.yaml')
+    config = load_config('./config/config.yaml')
     print("Read config tickers", config.tickers)
     print("Read config backtesting", config.backtesting.start_date, config.backtesting.end_date)
