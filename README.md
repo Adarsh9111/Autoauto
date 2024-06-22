@@ -9,6 +9,16 @@ and then activate the environment with
 
 `source venv/bin/activate`
 
+### repository structure
+
+- config: contains yaml files that define constants values that define system behavior
+- framework: contains implementations of different operations that are necessary for creating and testing strategies
+  - trading.py: contains framework code for creating and testing strategies
+  - data.py: contains framework code for loading and processing data
+- strategies: contains implementations of different strategies
+- hdata: contains historical data for backtesting
+- data: contains fresh data fetched periodically for calculating daily weight of stocks
+
 ### Fetching data from yahoo finance
 
 To fetch data for a specific list of companies for a given period of time, pass it as a csv file in a format similar to faang.csv
@@ -60,3 +70,12 @@ The output is the aggregated PnL in basis points achieved by trading over the en
 - [ ] compute draw down for strategies
 - [ ] frontend
 - [ ] printing library for backtest methods
+
+
+
+
+#### Potential brokers
+
+- interactive brokers
+- gff brokers
+- alpaca
