@@ -7,3 +7,8 @@ tickers:
   - MSFT
   - GOOGL
   - NTFLX
+
+
+alpaca:
+  api_key: PK7E9XJMOBKCCSO6QRO0
+  secret_key: BRHdnAeulXkhsV2MpbO6U9G5gtMJ5eETPBVEHlvd

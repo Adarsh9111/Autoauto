@@ -7,10 +7,17 @@ class Backtesting:
         self.end_date = end_date
 
 
+class Alpaca:
+    def __init__(self, api_key, secret_key):
+        self.api_key = api_key
+        self.secret_key = secret_key
+
+
 class Config:
-    def __init__(self, tickers, backtesting):
+    def __init__(self, tickers, backtesting, alpaca):
         self.tickers = tickers
         self.backtesting = Backtesting(**backtesting)
+        self.alpaca = Alpaca(**alpaca)
 
 
 def load_config(file_path):
