@@ -33,3 +33,9 @@ Execute this command:
 where the lookback can be changed to any value.
 
 The output is the aggregated PnL in basis points achieved by trading over the entire set of stocks present in data
+
+### todos
+
+- [ ] add date in the close/open index
+- [ ] schedule job to update latest data for each stock by appending to existing file
+- [ ] add tickers as a config
