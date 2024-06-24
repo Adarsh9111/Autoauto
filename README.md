@@ -40,9 +40,9 @@ The output is the aggregated PnL in basis points achieved by trading over the en
 
 - [X] add date in the close/open index
 - [ ] add tickers as a config [top 200]
-- [ ] setup backtesting data from 2017-2024 [freeze this, do not change]
-- [ ] update loader methods to fetch backtesting data by default but support custom files
-- [ ] create a new job to fetch data for all tickers for last 30 days (for calculating daily weights)
+- [x] setup backtesting data from 2017-2024 [freeze this, do not change]
+- [x] update loader methods to fetch backtesting data by default but support custom files
+- [x] create a new job to fetch data for all tickers for last 30 days (for calculating daily weights)
 - [X] pnl plot of cumulative return vector
 - [X] do not iterate over columns while processing values in mean reversion, use vectorization
 - [ ] add sector neutralization
