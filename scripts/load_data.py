@@ -12,7 +12,6 @@ def read_stock_data(folder_path: str):
     Returns:
     - DataFrame: Combined DataFrame where each stock's data can be accessed using df['ticker']
     """
-    combined_df = pd.DataFrame()
     ticker_data = {}
 
     # List all files in the folder
@@ -24,19 +23,20 @@ def read_stock_data(folder_path: str):
             # Extract ticker and dates from filename (assuming filename is ticker_start_date_end_date.csv)
             file_parts = os.path.splitext(file)[0].split('_')
             ticker = file_parts[0]
-            start_date = file_parts[1]
-            end_date = file_parts[2]
 
             # Read CSV file into DataFrame
             file_path = os.path.join(folder_path, file)
-            df = pd.read_csv(file_path)
+            df = pd.read_csv(file_path, parse_dates=['Date'])
+
+            # Ensure 'Date' column is the index
+            df.set_index('Date', inplace=True)
 
             # Store data in a dictionary by ticker symbol
             if ticker not in ticker_data:
                 ticker_data[ticker] = df
             else:
                 # Assuming you want to concatenate data if multiple files exist for the same ticker
-                ticker_data[ticker] = pd.concat([ticker_data[ticker], df], ignore_index=True)
+                ticker_data[ticker] = pd.concat([ticker_data[ticker], df], ignore_index=False)
 
     # Create combined DataFrame
     combined_df = pd.concat(ticker_data.values(), axis=1, keys=ticker_data.keys())
@@ -49,14 +49,15 @@ def read_close_price(folder_path: str):
     Create a new DataFrame with closing prices for each stock.
 
     Parameters:
-    - combined_df (DataFrame): DataFrame containing combined stock data with MultiIndex columns.
-
+    - folder_path (str): Path to the folder containing CSV files
+    
     Returns:
     - DataFrame: DataFrame with columns as tickers and rows as closing prices for each stock on each date.
     """
     data = read_stock_data(folder_path)
+    
     # Initialize an empty DataFrame with Date index
-    closing_prices_df = pd.DataFrame(index=data.index.get_level_values(0).unique())
+    closing_prices_df = pd.DataFrame(index=data.index)
 
     # Populate closing prices for each ticker
     for ticker in data.columns.levels[0]:
@@ -78,7 +79,7 @@ def read_open_price(folder_path: str):
     """
     data = read_stock_data(folder_path)
     # Initialize an empty DataFrame with Date index
-    opening_price_df = pd.DataFrame(index=data.index.get_level_values(0).unique())
+    opening_price_df = pd.DataFrame(index=data.index)
 
     # Populate closing prices for each ticker
     for ticker in data.columns.levels[0]:
